@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+  id="WebApp_ID" version="3.1">
+
+  <display-name>spring-mvc-app1</display-name>
+
+  <absolute-ordering/>
+  <!--Здесь происходит обработка запросов, отправляемых с Tomcat-->
+  <servlet> <!--Это dispatcher-servlet, который отвечает за обработку запросов-->
+    <servlet-name>dispatcher</servlet-name> <!--Его имя-->
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet
+    </servlet-class> <!--Берем нужный класс из библиотеки-->
+    <init-param> <!--Параметры конфига сервлета-->
+      <param-name>contextConfigLocation</param-name> <!--Брать контекст из -> -->
+      <param-value>/WEB-INF/applicationContextMVC.xml</param-value> <!--этого файла-->
+    </init-param>
+    <load-on-startup>1</load-on-startup> <!--Очередность загрузки сервлета-->
+  </servlet>
+
+  <servlet-mapping> <!--Типа роутинг-->
+    <servlet-name>dispatcher</servlet-name> <!--Этот диспетчер-->
+    <url-pattern>/
+    </url-pattern> <!--будет обрабатывать любой запрос на любой url, т.к. указан слэш-->
+  </servlet-mapping>
+
+</web-app>
